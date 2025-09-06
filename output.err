@@ -86,8 +86,7 @@ SPIR-V WARNING:
     In file ../src/compiler/spirv/spirv_to_nir.c:4818
     Unsupported SPIR-V capability: SpvCapabilityRuntimeDescriptorArray (5302)
     36 bytes into the SPIR-V binary
-RayTracer: ../src/gallium/auxiliary/util/u_surface.c:267: util_resource_copy_region: Assertion `src_bs == dst_bs' failed.
-/var/slurm_spool/job23038245/slurm_script: line 61: 3008186 Aborted                 (core dumped) apptainer exec --nv ~/container-setup/vulkan-sim-base.sif bash -lc '
+/var/slurm_spool/job23038278/slurm_script: line 61: 890759 Aborted                 (core dumped) apptainer exec --nv ~/container-setup/vulkan-sim-base.sif bash -lc '
   set -eo pipefail
 
   export ROOT="$HOME/vulkan-sim-root"
@@ -97,7 +96,7 @@ RayTracer: ../src/gallium/auxiliary/util/u_surface.c:267: util_resource_copy_reg
 
 
   DEVICE_CONFIG="$ROOT/vulkan-sim/configs/tested-cfgs/CUSTOM"
-  SCENE=12
+  SCENE=13
   WIDTH=128
   HEIGHT=128
   SAMPLES=2
