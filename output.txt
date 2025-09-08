@@ -1,5 +1,5 @@
 Running from: /cluster/home/jorgfi
-Job: vulkan_sim  ID: 23038743  Nodes: idun-07-02
+Job: vulkan_sim  ID: 23040264  Nodes: idun-07-03
 
 
 ENVIRONMENT INFO
@@ -8,7 +8,7 @@ ENVIRONMENT INFO
 	- CPU:	 Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz
 	- RAM:	 753Gi
 
-Sun Sep  7 12:47:45 2025       
+Mon Sep  8 09:46:30 2025       
 +-----------------------------------------------------------------------------------------+
 | NVIDIA-SMI 575.57.08              Driver Version: 575.57.08      CUDA Version: 12.9     |
 |-----------------------------------------+------------------------+----------------------+
@@ -16,8 +16,8 @@ Sun Sep  7 12:47:45 2025
 | Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
 |                                         |                        |               MIG M. |
 |=========================================+========================+======================|
-|   0  Tesla V100-PCIE-32GB           On  |   00000000:89:00.0 Off |                    0 |
-| N/A   26C    P0             22W /  250W |       0MiB /  32768MiB |      0%      Default |
+|   0  Tesla V100-PCIE-32GB           On  |   00000000:12:00.0 Off |                    0 |
+| N/A   27C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
 |                                         |                        |                  N/A |
 +-----------------------------------------+------------------------+----------------------+
                                                                                          
@@ -66,6 +66,3 @@ When running using modern config (i.e. volta) and PTXPLUS with CUDA 4.2, the $PT
 
 ----------------------------------------------------------------------------
 setup_environment succeeded
-Detected 753.8637428283691 GB of RAM.
-Detected 40 CPUs, limiting to 39 processes.
-Launching 39 processes...

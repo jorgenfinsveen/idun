@@ -1,22 +1,4 @@
-multiprocessing.pool.RemoteTraceback: 
-"""
 Traceback (most recent call last):
-  File "/usr/lib/python3.8/multiprocessing/pool.py", line 125, in worker
-    result = (True, func(*args, **kwds))
-  File "/usr/lib/python3.8/multiprocessing/pool.py", line 48, in mapstar
-    return list(map(*args))
-  File "run_benchmark.py", line 19, in run_command
-    with open(log_file, 'w+') as out_file:
-FileNotFoundError: [Errno 2] No such file or directory: './logs/PARTY_AO.log'
-"""
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "run_benchmark.py", line 93, in <module>
-    p.map(run_command, commands)
-  File "/usr/lib/python3.8/multiprocessing/pool.py", line 364, in map
-    return self._map_async(func, iterable, mapstar, chunksize).get()
-  File "/usr/lib/python3.8/multiprocessing/pool.py", line 771, in get
-    raise self._value
-FileNotFoundError: [Errno 2] No such file or directory: './logs/PARTY_AO.log'
+  File "run_benchmark.py", line 91, in <module>
+    scene_number = scene_list[scene]
+KeyError: 'SPRING'
