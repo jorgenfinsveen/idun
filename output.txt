@@ -1,5 +1,5 @@
 Running from: /cluster/home/jorgfi
-Job: vulkan_sim  ID: 23040264  Nodes: idun-07-03
+Job: vulkan_sim  ID: 23040401  Nodes: idun-07-03
 
 
 ENVIRONMENT INFO
@@ -8,7 +8,7 @@ ENVIRONMENT INFO
 	- CPU:	 Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz
 	- RAM:	 753Gi
 
-Mon Sep  8 09:46:30 2025       
+Mon Sep  8 12:32:36 2025       
 +-----------------------------------------------------------------------------------------+
 | NVIDIA-SMI 575.57.08              Driver Version: 575.57.08      CUDA Version: 12.9     |
 |-----------------------------------------+------------------------+----------------------+
@@ -66,3 +66,22 @@ When running using modern config (i.e. volta) and PTXPLUS with CUDA 4.2, the $PT
 
 ----------------------------------------------------------------------------
 setup_environment succeeded
+Detected 753.8637619018555 GB of RAM.
+Detected 40 CPUs, limiting to 39 processes.
+Launching 39 processes...
+Saving output to ./logs/WKND_AO.log
+Running: ./RayTracer --scene 1 --width 32 --height 32 --samples 1  --shader-type 5
+Saving output to ./logs/CAR_AO.log
+Running: ./RayTracer --scene 9 --width 32 --height 32 --samples 1  AO
+Error running ./RayTracer --scene 9 --width 32 --height 32 --samples 1  AO! Return value: 1
+Saving output to ./logs/SPRNG_AO.log
+Running: ./RayTracer --scene 11 --width 32 --height 32 --samples 1  AO
+Error running ./RayTracer --scene 11 --width 32 --height 32 --samples 1  AO! Return value: 1
+Saving output to ./logs/PARTY_AO.log
+Running: ./RayTracer --scene 12 --width 32 --height 32 --samples 1  AO
+Error running ./RayTracer --scene 12 --width 32 --height 32 --samples 1  AO! Return value: 1
+Saving output to ./logs/FOX_AO.log
+Running: ./RayTracer --scene 13 --width 32 --height 32 --samples 1  AO
+Error running ./RayTracer --scene 13 --width 32 --height 32 --samples 1  AO! Return value: 1
+Rerunning 4 failed commands...
+Simulation complete! 4 failed.
