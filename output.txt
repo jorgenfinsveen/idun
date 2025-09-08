@@ -1,5 +1,5 @@
 Running from: /cluster/home/jorgfi
-Job: vulkan_sim  ID: 23040401  Nodes: idun-07-03
+Job: vulkan_sim  ID: 23040409  Nodes: idun-07-03
 
 
 ENVIRONMENT INFO
@@ -8,7 +8,7 @@ ENVIRONMENT INFO
 	- CPU:	 Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz
 	- RAM:	 753Gi
 
-Mon Sep  8 12:32:36 2025       
+Mon Sep  8 12:45:06 2025       
 +-----------------------------------------------------------------------------------------+
 | NVIDIA-SMI 575.57.08              Driver Version: 575.57.08      CUDA Version: 12.9     |
 |-----------------------------------------+------------------------+----------------------+
@@ -17,7 +17,7 @@ Mon Sep  8 12:32:36 2025
 |                                         |                        |               MIG M. |
 |=========================================+========================+======================|
 |   0  Tesla V100-PCIE-32GB           On  |   00000000:12:00.0 Off |                    0 |
-| N/A   27C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
+| N/A   26C    P0             23W /  250W |       0MiB /  32768MiB |      0%      Default |
 |                                         |                        |                  N/A |
 +-----------------------------------------+------------------------+----------------------+
                                                                                          
@@ -71,6 +71,7 @@ Detected 40 CPUs, limiting to 39 processes.
 Launching 39 processes...
 Saving output to ./logs/WKND_AO.log
 Running: ./RayTracer --scene 1 --width 32 --height 32 --samples 1  --shader-type 5
+Error running ./RayTracer --scene 1 --width 32 --height 32 --samples 1  --shader-type 5! Return value: 134
 Saving output to ./logs/CAR_AO.log
 Running: ./RayTracer --scene 9 --width 32 --height 32 --samples 1  AO
 Error running ./RayTracer --scene 9 --width 32 --height 32 --samples 1  AO! Return value: 1
@@ -83,5 +84,5 @@ Error running ./RayTracer --scene 12 --width 32 --height 32 --samples 1  AO! Ret
 Saving output to ./logs/FOX_AO.log
 Running: ./RayTracer --scene 13 --width 32 --height 32 --samples 1  AO
 Error running ./RayTracer --scene 13 --width 32 --height 32 --samples 1  AO! Return value: 1
-Rerunning 4 failed commands...
+Rerunning 5 failed commands...
 Simulation complete! 4 failed.
