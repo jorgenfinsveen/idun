@@ -1,0 +1,54 @@
+#! /bin/bash
+#SBATCH -J render_passes_2k_lod0-NO_ARGS.accelsim-commit-1c17a3a8a922e56d395733e9a6dba7adc8970a30_modified_0.0_20251117-1549gpgpu-sim_git-commit-1c17a3a8a922e56d395733e9a6dba7adc8970a30_modified_0.0
+#SBATCH --threads-per-core=1
+#SBATCH --cpus-per-task=1
+#SBATCH --nodes=1
+#SBATCH --mem-per-cpu=4G
+#SBACTH --time=200:00:00,
+#SBATCH -p batch
+#NO SBATCH --mail-type=END,FAIL
+#SBATCH --export=ALL
+#SBATCH --output=/cluster/home/jorgfi/projects/crisp_v2/accel-sim-framework/util/job_launching/../../sim_run_11.7/render_passes_2k_lod0/NO_ARGS/RTX3070-SASS-concurrent-fg-VISUAL/out.log
+#SBATCH --error=/cluster/home/jorgfi/projects/crisp_v2/accel-sim-framework/util/job_launching/../../sim_run_11.7/render_passes_2k_lod0/NO_ARGS/RTX3070-SASS-concurrent-fg-VISUAL/out.err
+
+copy_output() {
+    mv /tmp/render_passes_2k_lod0-NO_ARGS.accelsim-commit-1c17a3a8a922e56d395733e9a6dba7adc8970a30_modified_0.0_20251117-1549gpgpu-sim_git-commit-1c17a3a8a922e56d395733e9a6dba7adc8970a30_modified_0.0.e2 ./render_passes_2k_lod0-NO_ARGS.accelsim-commit-1c17a3a8a922e56d395733e9a6dba7adc8970a30_modified_0.0_20251117-1549gpgpu-sim_git-commit-1c17a3a8a922e56d395733e9a6dba7adc8970a30_modified_0.0.e2
+    mv /tmp/render_passes_2k_lod0-NO_ARGS.accelsim-commit-1c17a3a8a922e56d395733e9a6dba7adc8970a30_modified_0.0_20251117-1549gpgpu-sim_git-commit-1c17a3a8a922e56d395733e9a6dba7adc8970a30_modified_0.0.o2 ./render_passes_2k_lod0-NO_ARGS.accelsim-commit-1c17a3a8a922e56d395733e9a6dba7adc8970a30_modified_0.0_20251117-1549gpgpu-sim_git-commit-1c17a3a8a922e56d395733e9a6dba7adc8970a30_modified_0.0.o2
+}
+
+trap copy_output ERR
+
+#citing https://stackoverflow.com/questions/35800082/how-to-trap-err-when-using-set-e-in-bash
+#Setting -E alongside -e makes any trap on ERR inherited by shell funcs, command substitutions and commands executed in a subshell environment 
+set -eE
+
+if [ "$GPGPUSIM_SETUP_ENVIRONMENT_WAS_RUN" != "1" ]; then
+    export GPGPUSIM_ROOT=/cluster/home/jorgfi/projects/crisp_v2/accel-sim-framework/gpu-simulator/gpgpu-sim
+    source $GPGPUSIM_ROOT/setup_environment
+else
+    echo "Skipping setup_environment - already set"
+fi
+
+echo "doing: export -n PTX_SIM_USE_PTX_FILE"
+export -n PTX_SIM_USE_PTX_FILE
+echo "doing: export LD_LIBRARY_PATH=/cluster/home/jorgfi/projects/crisp_v2/accel-sim-framework/util/job_launching/../../sim_run_11.7/gpgpu-sim-builds/accelsim-commit-1c17a3a8a922e56d395733e9a6dba7adc8970a30_modified_0.0_20251117-1549gpgpu-sim_git-commit-1c17a3a8a922e56d395733e9a6dba7adc8970a30_modified_0.0:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH=/cluster/home/jorgfi/projects/crisp_v2/accel-sim-framework/util/job_launching/../../sim_run_11.7/gpgpu-sim-builds/accelsim-commit-1c17a3a8a922e56d395733e9a6dba7adc8970a30_modified_0.0_20251117-1549gpgpu-sim_git-commit-1c17a3a8a922e56d395733e9a6dba7adc8970a30_modified_0.0:$LD_LIBRARY_PATH
+echo "doing: cd /cluster/home/jorgfi/projects/crisp_v2/accel-sim-framework/util/job_launching/../../sim_run_11.7/render_passes_2k_lod0/NO_ARGS/RTX3070-SASS-concurrent-fg-VISUAL"
+cd /cluster/home/jorgfi/projects/crisp_v2/accel-sim-framework/util/job_launching/../../sim_run_11.7/render_passes_2k_lod0/NO_ARGS/RTX3070-SASS-concurrent-fg-VISUAL
+echo "doing: export OPENCL_CURRENT_TEST_PATH=/cluster/home/jorgfi/projects/crisp_v2/accel-sim-framework/util/job_launching/../../sim_run_11.7/render_passes_2k_lod0/NO_ARGS/RTX3070-SASS-concurrent-fg-VISUAL"
+export OPENCL_CURRENT_TEST_PATH=/cluster/home/jorgfi/projects/crisp_v2/accel-sim-framework/util/job_launching/../../sim_run_11.7/render_passes_2k_lod0/NO_ARGS/RTX3070-SASS-concurrent-fg-VISUAL
+echo "doing: export OPENCL_REMOTE_GPU_HOST=REPLACE_REMOTE_HOST"
+export OPENCL_REMOTE_GPU_HOST=REPLACE_REMOTE_HOST
+echo "doing "
+
+echo "doing: export PATH=/cluster/home/jorgfi/projects/crisp_v2/accel-sim-framework/gpu-simulator/gpgpu-sim/bin:/cluster/home/jorgfi/usr/local/cuda-11.7/bin:/cluster/home/jorgfi/projects/crisp_v2/vulkan-sim/bin:/cluster/home/jorgfi/usr/local/cuda-11.7/bin:/cluster/home/jorgfi/.environments/python/env/bin:/cluster/apps/eb/software/Python/3.13.5-GCCcore-14.3.0/bin:/cluster/apps/eb/software/OpenSSL/3/bin:/cluster/apps/eb/software/XZ/5.8.1-GCCcore-14.3.0/bin:/cluster/apps/eb/software/SQLite/3.50.1-GCCcore-14.3.0/bin:/cluster/apps/eb/software/Tcl/9.0.1-GCCcore-14.3.0/bin:/cluster/apps/eb/software/ncurses/6.5-GCCcore-14.3.0/bin:/cluster/apps/eb/software/bzip2/1.0.8-GCCcore-14.3.0/bin:/cluster/apps/eb/software/binutils/2.44-GCCcore-14.3.0/bin:/cluster/apps/eb/software/GCCcore/14.3.0/bin:/cluster/home/jorgfi/opt/vulkansdk/current/x86_64/bin:/cluster/home/jorgfi/usr/local/cuda-11.7/bin:/cluster/home/jorgfi/.environments/python/env/bin:/cluster/home/jorgfi/projects/crisp_v2/accel-sim-framework/gpu-simulator/gpgpu-sim/bin:/cluster/home/jorgfi/projects/crisp_v2/vulkan-sim/bin:/cluster/home/jorgfi/.local/bin:/cluster/home/jorgfi/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin"
+export PATH=/cluster/home/jorgfi/projects/crisp_v2/accel-sim-framework/gpu-simulator/gpgpu-sim/bin:/cluster/home/jorgfi/usr/local/cuda-11.7/bin:/cluster/home/jorgfi/projects/crisp_v2/vulkan-sim/bin:/cluster/home/jorgfi/usr/local/cuda-11.7/bin:/cluster/home/jorgfi/.environments/python/env/bin:/cluster/apps/eb/software/Python/3.13.5-GCCcore-14.3.0/bin:/cluster/apps/eb/software/OpenSSL/3/bin:/cluster/apps/eb/software/XZ/5.8.1-GCCcore-14.3.0/bin:/cluster/apps/eb/software/SQLite/3.50.1-GCCcore-14.3.0/bin:/cluster/apps/eb/software/Tcl/9.0.1-GCCcore-14.3.0/bin:/cluster/apps/eb/software/ncurses/6.5-GCCcore-14.3.0/bin:/cluster/apps/eb/software/bzip2/1.0.8-GCCcore-14.3.0/bin:/cluster/apps/eb/software/binutils/2.44-GCCcore-14.3.0/bin:/cluster/apps/eb/software/GCCcore/14.3.0/bin:/cluster/home/jorgfi/opt/vulkansdk/current/x86_64/bin:/cluster/home/jorgfi/usr/local/cuda-11.7/bin:/cluster/home/jorgfi/.environments/python/env/bin:/cluster/home/jorgfi/projects/crisp_v2/accel-sim-framework/gpu-simulator/gpgpu-sim/bin:/cluster/home/jorgfi/projects/crisp_v2/vulkan-sim/bin:/cluster/home/jorgfi/.local/bin:/cluster/home/jorgfi/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+
+# Uncomment to force blocking torque launches
+# this needs to be commented for concurrent kernel ptx mode
+echo "doing export CUDA_LAUNCH_BLOCKING=1"
+export CUDA_LAUNCH_BLOCKING=1
+
+
+echo "doing:  /cluster/home/jorgfi/projects/crisp_v2/accel-sim-framework/util/job_launching/../../sim_run_11.7/gpgpu-sim-builds/accelsim-commit-1c17a3a8a922e56d395733e9a6dba7adc8970a30_modified_0.0_20251117-1549gpgpu-sim_git-commit-1c17a3a8a922e56d395733e9a6dba7adc8970a30_modified_0.0/accel-sim.out  -config ./gpgpusim.config -trace ./traces/kernelslist.g"
+ /cluster/home/jorgfi/projects/crisp_v2/accel-sim-framework/util/job_launching/../../sim_run_11.7/gpgpu-sim-builds/accelsim-commit-1c17a3a8a922e56d395733e9a6dba7adc8970a30_modified_0.0_20251117-1549gpgpu-sim_git-commit-1c17a3a8a922e56d395733e9a6dba7adc8970a30_modified_0.0/accel-sim.out  -config ./gpgpusim.config -trace ./traces/kernelslist.g

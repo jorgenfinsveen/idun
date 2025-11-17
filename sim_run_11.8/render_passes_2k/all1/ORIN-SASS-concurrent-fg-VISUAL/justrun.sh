@@ -1,1 +1,0 @@
- /cluster/home/jorgfi/projects/crisp-framework/accel-sim-framework/util/job_launching/../../sim_run_11.8/gpgpu-sim-builds/accelsim-commit-1c17a3a8a922e56d395733e9a6dba7adc8970a30_modified_0.0_20251021-1717gpgpu-sim_git-commit-1c17a3a8a922e56d395733e9a6dba7adc8970a30_modified_1.0/accel-sim.out  -config ./gpgpusim.config -trace ./traces/kernelslist.g
